@@ -13,7 +13,7 @@ Use this dApp to wave at me on Ethereum!
 - WalletConnect
 
 ##### Smart Contract on Goerli
-- [Waveportal](https://goerli.etherscan.io/tx/0xF7B7ab1dE3fba402e563E3F9b17547a0AADdB078)
+- [Waveportal](https://goerli.etherscan.io/address/0xf7b7ab1de3fba402e563e3f9b17547a0aaddb078)
 
 ##### Instructions
 1. Run `npm install` to install dependencies
