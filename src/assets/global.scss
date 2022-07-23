@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@700&family=Nunito:wght@500;600;700&display=swap');
 
 .waveportal {
-  background-image: url('/background.png');
+  background: url('/background.jpg') no-repeat center center;
   height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  overflow: scroll;
   .wave {
     &-button {
       margin-top: 26px!important;
