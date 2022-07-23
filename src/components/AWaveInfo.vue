@@ -5,10 +5,10 @@ const open = ref(false);
 </script>
 
 <template>
-  <div class="mt-20 absolute w-auto left-[300px] md:left-[1150px] md:bottom-8">
+  <div class="w-auto">
     <div v-if="open" class="rounded text-white p-4 mr-10 mb-4 border-light bg-light border">
       <p class="leading-snug text-sm">
-        <a href="https://findtoni.dev/blog/" target="_blank" class="underline">Here's</a>
+        <a href="https://findtoni.dev/blog/ethereum-dev-overview" target="_blank" class="underline">Here's</a>
         a quick overview of building on Ethereum</p>
       <p class="leading-snug text-sm pt-1">
         <a href="https://buildspace.so/p/build-solidity-web3-app" target="_blank" class="underline">Buildspace</a>
