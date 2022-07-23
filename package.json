@@ -1,0 +1,38 @@
+{
+  "name": "waveportal",
+  "private": true,
+  "version": "1.0.0",
+  "author": "findtoni",
+  "keywords": ["vue web3", "vue solidity", "vue smart contracts", "vue hardhat"],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.6.7",
+    "@heroicons/vue": "^1.0.6",
+    "@metamask/detect-provider": "^1.2.0",
+    "@walletconnect/socket-transport": "^1.7.8",
+    "@walletconnect/web3-provider": "^1.7.8",
+    "dateformat": "^5.0.3",
+    "dotenv": "^16.0.1",
+    "pinia": "^2.0.16",
+    "sass": "^1.53.0",
+    "vue": "^3.2.25",
+    "web3": "^1.7.4"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.6",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "autoprefixer": "^10.4.7",
+    "chai": "^4.3.6",
+    "ethereum-waffle": "^3.4.4",
+    "ethers": "^5.6.9",
+    "hardhat": "^2.9.9",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.4",
+    "vite": "^2.9.9"
+  }
+}
