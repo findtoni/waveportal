@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@700&family=Nunito:wght@500;600;700&display=swap');
+
+.waveportal {
+  background-image: url('background.png');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .wave {
+    &-button {
+      margin-top: 26px!important;
+      filter: drop-shadow(-2px 0px 10px rgba(255, 255, 255, 0.46));
+    }
+  }
+}
+body, html {
+  overscroll-behavior: none;
+  height: 100%;
+}
+#app {
+  height: 100%;
+}
