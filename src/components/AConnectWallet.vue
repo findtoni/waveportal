@@ -23,7 +23,7 @@ async function connectWallet(network) {
   <div>
     <div class="flex flex-col space-y-2">
       <button v-if="!store.isConnected" @click="open = true;" class="wave-button bg-white rounded font-semibold h-10 transition ease-in-out delay-150 hover:scale-105">
-        <img src="wallet.svg" width="20" height="auto" alt="wallet" class="inline-flex mr-1 pb-1">
+        <img src="/wallet.svg" width="20" height="auto" alt="wallet" class="inline-flex mr-1 pb-1">
         Connect Wallet
       </button>
       <span v-if="store.isConnected && store.isWrongNetwork" class="w-auto inline-flex mx-auto items-center text-center px-2 py-0.5 rounded text-xs font-medium text-gray-300">
@@ -39,13 +39,13 @@ async function connectWallet(network) {
           <span class="text-white">Metamask
             <ALoading v-if="loading.metamask" />
           </span>
-          <img src="metamask.png" alt="MetaMask Logo" height="auto" width="25">
+          <img src="/metamask.png" alt="MetaMask Logo" height="auto" width="25">
         </div>
         <div @click="connectWallet('walletconnect')" class="flex justify-between items-center rounded bg-light border border-[#40444f] hover:border-gray-500 cursor-pointer p-3">
           <span class="text-white">WalletConnect
             <ALoading v-if="loading.walletconnect" />
           </span>
-          <img src="walletconnect.svg" alt="WalletConnect Logo" height="auto" width="25">
+          <img src="/walletconnect.svg" alt="WalletConnect Logo" height="auto" width="25">
         </div>
       </div>
     </AModal>
