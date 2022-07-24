@@ -11,7 +11,7 @@ export const useStore = defineStore('liquid', {
       account: null,
       waves: [],
       contract: {
-        address: '0xF7B7ab1dE3fba402e563E3F9b17547a0AADdB078',
+        address: import.meta.env.VITE_CONTRACT_ADDRESS,
         gasLimit: 300000
       },
       network: {
@@ -27,7 +27,7 @@ export const useStore = defineStore('liquid', {
     },
     wavePortalContract(state) {
       const provider = new providers.Web3Provider(ethereum);
-      const signer = provider.getSigner();
+      const signer = provider.getSigner(import.meta.env.VITE_CONTRACT_ADDRESS);
       return new ethers.Contract(state.contract.address, abi.abi, signer);
     },
     isConnected: state => state.account ? true : false,
