@@ -5,7 +5,7 @@ import detectEthereumProvider from '@metamask/detect-provider'
 import abi from '../abis/WavePortal.json';
 import dateFormat from 'dateformat';
 
-export const useStore = defineStore('liquid', {
+export const useStore = defineStore('waveportal', {
   state: () => {
     return {
       account: null,
@@ -25,9 +25,11 @@ export const useStore = defineStore('liquid', {
     ethereum() {
       return window.ethereum;
     },
+    provider(state) {
+      return new providers.Web3Provider(ethereum);
+    },
     wavePortalContract(state) {
-      const provider = new providers.Web3Provider(ethereum);
-      const signer = provider.getSigner(import.meta.env.VITE_CONTRACT_ADDRESS);
+      const signer = this.provider.getSigner(state.account ? state.account : state.contract.address);
       return new ethers.Contract(state.contract.address, abi.abi, signer);
     },
     isConnected: state => state.account ? true : false,
@@ -45,6 +47,8 @@ export const useStore = defineStore('liquid', {
       if (provider && provider == this.ethereum) {
         const accounts = await this.ethereum.request({ method: 'eth_requestAccounts' });
         const chainId = await this.ethereum.request({ method: 'eth_chainId' });
+        const signer = this.provider.getSigner(accounts[0]);
+        const signature = await signer.signMessage(accounts[0]);
         this.account = accounts[0];
         this.network.chainId = chainId;
       } else this.error = 'Install Metamask';
