@@ -1,11 +1,7 @@
 <script setup>
 import { useStore } from '../store';
 const store = useStore();
-
-fetchWaves();
-async function fetchWaves() {
-  await store.fetchWaves();
-}
+store.fetchWaves();
 </script>
 
 <template>
