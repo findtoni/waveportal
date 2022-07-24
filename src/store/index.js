@@ -27,7 +27,7 @@ export const useStore = defineStore('liquid', {
     },
     wavePortalContract(state) {
       const provider = new providers.Web3Provider(ethereum);
-      const signer = provider.getSigner();
+      const signer = provider.getSigner(import.meta.env.VITE_CONTRACT_ADDRESS);
       return new ethers.Contract(state.contract.address, abi.abi, signer);
     },
     isConnected: state => state.account ? true : false,
