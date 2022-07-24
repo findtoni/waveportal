@@ -11,7 +11,7 @@ export const useStore = defineStore('liquid', {
       account: null,
       waves: [],
       contract: {
-        address: import.meta.env.VITE_CONTRACT_ADDRESS,
+        address: '0xF7B7ab1dE3fba402e563E3F9b17547a0AADdB078',
         gasLimit: 300000
       },
       network: {
