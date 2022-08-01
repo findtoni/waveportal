@@ -17,7 +17,7 @@ store.fetchWaves();
         Switch network to Goerli to view
       </span>
     </div>
-    <div v-else class="flex justify-center items-center">
+    <div v-else class="flex justify-center items-center pb-20 md:pb-10">
       <div class="w-full md:w-3/5 lg:w-1/2 flex flex-col space-y-3">
         <div v-for="({ waver, message, emoji, timestamp }, index) in store.waves" :key="index" class="flex justify-between items-center border rounded-md p-3 focus-within:md:p-5 border-[#2a2a2a]">
           <div class="w-auto">

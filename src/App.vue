@@ -14,12 +14,12 @@ store.initialize();
     <AWaveLogo />
     <AWaveIntro />
     <AWaveLog />
-    <!-- <div class="w-5/6 md:w-3/4 mx-auto py-10">
-      <div class="flex justify-between items-center mx-auto left-0 right-0 bottom-4 w-11/12 md:w-8/12">
-        <AWaveRepo />
-        <AWaveInfo />
-      </div>
-    </div> -->
+    <div class="fixed bottom-[25px] md:bottom-[40px] left-[110px] md:left-[180px] mx-auto">
+      <AWaveRepo />
+    </div>
+    <div class="fixed  bottom-[20px] md:bottom-[40px] right-[-80px] md:right-[10px] w-64 mx-auto">
+      <AWaveInfo />
+    </div>
   </div>
 </template>
 
