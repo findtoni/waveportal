@@ -28,7 +28,7 @@ store.fetchWaves();
             <p class="font-semibold text-sm md:text-lg inline-flex">Waver<span class="ml-2 font-medium text-white">{{ waver.substring(0, 20) + '...' }}</span></p>
             <p class="md:hidden font-semibold text-gray-300 text-sm">Waved on<span class="ml-2 font-medium text-white">{{ timestamp }}</span></p>
           </div>
-          <p class="hidden md:inline-flex text-center font-semibold w-1/5 text-gray-300 text-md">{{ timestamp }}</p>
+          <p class="hidden md:inline-flex text-center font-semibold w-1/5 text-gray-300 text-base">{{ timestamp }}</p>
         </div>
       </div>
     </div>

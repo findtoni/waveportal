@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useStore } from '../store';
-import { CheckIcon, SelectorIcon, CheckCircleIcon, ExternalLinkIcon } from '@heroicons/vue/solid';
+import { CheckIcon, SelectorIcon, CheckCircleIcon, ExternalLinkIcon, RefreshIcon } from '@heroicons/vue/solid';
 import { Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions } from '@headlessui/vue';
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import AModal from './base/AModal.vue';
@@ -31,6 +31,7 @@ const emojis = [
 const open = ref(false);
 const loading = ref(false);
 const hash = ref(null);
+const bePatient = ref(false);
 const wave = ref({ message: 'Hello!', emoji: '👋' });
 const query = ref('');
 const filtered = computed(() =>
@@ -43,6 +44,7 @@ const filtered = computed(() =>
 
 async function sendWave() {
   loading.value = true;
+  setTimeout(() => bePatient.value = true, 10000);
   hash.value = await store.sendWave(wave.value);
   loading.value = false;
 }
@@ -110,6 +112,7 @@ async function sendWave() {
         <div v-if="!hash" class="flex flex-col items-center space-y-3">
           <ALoading is-large />
           <p class="text-white text-lg">Mining transaction...</p>
+          <p v-if="bePatient" class="text-gray-300">Hang in there, almost done</p>
         </div>
         <div v-else class="flex flex-col items-center space-y-3">
           <CheckCircleIcon class="h-12 w-12 text-green-600" />
@@ -117,6 +120,9 @@ async function sendWave() {
           <a :href="`https://goerli.etherscan.io/tx/${hash}`" target="_blank">
             <p class="text-white underline inline-flex">View Transaction<ExternalLinkIcon class="w-4 h-4 mr-2 mt-1" /></p>
           </a>
+          <p @click="window.location.reload()" class="inline-flex text-gray-300 text-xs cursor-pointer">
+            <RefreshIcon class="w-3 h-3 mt-0.5 mr-1" />Reload to view wave
+          </p>
         </div>
       </div>
     </AModal>

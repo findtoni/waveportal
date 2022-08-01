@@ -86,10 +86,12 @@ export const useStore = defineStore('waveportal', {
           waver: wave.waver,
           message: wave.message,
           emoji: wave.emoji,
-          timestamp: dateFormat(new Date(wave.timestamp * 1000), 'mmmm dS, yyyy'),
+          timestamp: dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy'),
+          rawDate: new Date(wave.timestamp * 1000),
           transaction: wave[0]
         })
       });
+      this.waves = this.waves.sort((a, b) => b.rawDate - a.rawDate);
     },
     async sendWave(wave) {
       const waveTransaction = await this.wavePortalContract.wave(wave.message, wave.emoji, { gasLimit: this.contract.gasLimit });
