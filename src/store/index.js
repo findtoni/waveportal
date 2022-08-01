@@ -36,6 +36,13 @@ export const useStore = defineStore('waveportal', {
     isWrongNetwork: state => state.network.chainId ? state.network.chainId !== '0x5' : true,
   },
   actions: {
+    async initialize() {
+      const chainId = await this.ethereum.request({ method: 'eth_chainId' });
+      this.network.chainId = chainId;
+      this.ethereum.on('chainChanged', () => {
+        window.location.reload();
+      });
+    },
     async connectWallet(network) {
       if (network == 'metamask') {
         await this.useMetamask();
@@ -51,6 +58,7 @@ export const useStore = defineStore('waveportal', {
         const signature = await signer.signMessage(accounts[0]);
         this.account = accounts[0];
         this.network.chainId = chainId;
+        if (this.isWrongNetwork) await this.switchNetwork();
       } else this.error = 'Install Metamask';
     },
     async useWalletConnect() {
@@ -61,6 +69,14 @@ export const useStore = defineStore('waveportal', {
       const chainId = await web3.eth.getChainId();
       this.account = accounts[0];
       this.network.chainId = chainId;
+      if (this.isWrongNetwork) await this.switchNetwork();
+    },
+    async switchNetwork() {
+      await this.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x5' }],
+      });
+      window.location.reload();
     },
     async fetchWaves() {
       const waves = await this.wavePortalContract.getAllWaves();
@@ -70,10 +86,12 @@ export const useStore = defineStore('waveportal', {
           waver: wave.waver,
           message: wave.message,
           emoji: wave.emoji,
-          timestamp: dateFormat(new Date(wave.timestamp * 1000), 'mmmm dS, yyyy'),
+          timestamp: dateFormat(new Date(wave.timestamp * 1000), 'mmm dS, yyyy'),
+          rawDate: new Date(wave.timestamp * 1000),
           transaction: wave[0]
         })
       });
+      this.waves = this.waves.sort((a, b) => b.rawDate - a.rawDate);
     },
     async sendWave(wave) {
       const waveTransaction = await this.wavePortalContract.wave(wave.message, wave.emoji, { gasLimit: this.contract.gasLimit });

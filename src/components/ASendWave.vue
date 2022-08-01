@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useStore } from '../store';
-import { CheckIcon, SelectorIcon, CheckCircleIcon, ExternalLinkIcon } from '@heroicons/vue/solid';
+import { CheckIcon, SelectorIcon, CheckCircleIcon, ExternalLinkIcon, RefreshIcon } from '@heroicons/vue/solid';
 import { Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions } from '@headlessui/vue';
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import AModal from './base/AModal.vue';
@@ -31,6 +31,7 @@ const emojis = [
 const open = ref(false);
 const loading = ref(false);
 const hash = ref(null);
+const bePatient = ref(false);
 const wave = ref({ message: 'Hello!', emoji: '👋' });
 const query = ref('');
 const filtered = computed(() =>
@@ -43,6 +44,7 @@ const filtered = computed(() =>
 
 async function sendWave() {
   loading.value = true;
+  setTimeout(() => bePatient.value = true, 10000);
   hash.value = await store.sendWave(wave.value);
   loading.value = false;
 }
@@ -52,12 +54,6 @@ async function sendWave() {
   <div class="w-full">
     <button v-if="store.isWrongNetwork" class="w-full wave-button cursor-not-allowed bg-gray-300 rounded font-semibold h-10 mb-2">Wave at me!</button>
     <button v-else @click="open = true" class="w-full wave-button bg-white rounded font-semibold h-10 mb-2 transition ease-in-out delay-150 hover:scale-105">Wave at me!</button>
-    <span v-if="store.isWrongNetwork" class="flex justify-center items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">
-      <svg class="mr-1.5 h-2 w-2 text-purple-400" fill="currentColor" viewBox="0 0 8 8">
-        <circle cx="4" cy="4" r="3" />
-      </svg>
-      <span>Switch network to goerli</span>
-    </span>
     <AModal title="Wave at me" :open="open" @close="open = false" :hide="loading || hash">
       <div v-if="!loading && !hash" class="w-full flex flex-col space-y-4 pt-4">
         <Listbox as="div" v-model="wave.emoji">
@@ -116,6 +112,7 @@ async function sendWave() {
         <div v-if="!hash" class="flex flex-col items-center space-y-3">
           <ALoading is-large />
           <p class="text-white text-lg">Mining transaction...</p>
+          <p v-if="bePatient" class="text-gray-300">Hang in there, almost done</p>
         </div>
         <div v-else class="flex flex-col items-center space-y-3">
           <CheckCircleIcon class="h-12 w-12 text-green-600" />
@@ -123,6 +120,9 @@ async function sendWave() {
           <a :href="`https://goerli.etherscan.io/tx/${hash}`" target="_blank">
             <p class="text-white underline inline-flex">View Transaction<ExternalLinkIcon class="w-4 h-4 mr-2 mt-1" /></p>
           </a>
+          <p @click="window.location.reload()" class="inline-flex text-gray-300 text-xs cursor-pointer">
+            <RefreshIcon class="w-3 h-3 mt-0.5 mr-1" />Reload to view wave
+          </p>
         </div>
       </div>
     </AModal>
