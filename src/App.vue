@@ -4,6 +4,9 @@ import AWaveLogo from './components/AWaveLogo.vue';
 import AWaveIntro from './components/AWaveIntro.vue';
 import AWaveInfo from './components/AWaveInfo.vue';
 import AWaveRepo from './components/AWaveRepo.vue';
+import { useStore } from './store';
+const store = useStore();
+store.initialize();
 </script>
 
 <template>

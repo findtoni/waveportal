@@ -26,12 +26,6 @@ async function connectWallet(network) {
         <img src="/wallet.svg" width="20" height="auto" alt="wallet" class="inline-flex mr-1 pb-1">
         Connect Wallet
       </button>
-      <span v-if="store.isConnected && store.isWrongNetwork" class="w-auto inline-flex mx-auto items-center text-center px-2 py-0.5 rounded text-xs font-medium text-gray-300">
-        <svg class="mr-1.5 h-2 w-2 text-purple-300" fill="currentColor" viewBox="0 0 8 8">
-          <circle cx="4" cy="4" r="3" />
-        </svg>
-        Switch network to ropsten
-      </span>
     </div>
     <AModal title="Connect a wallet" :open="open" @close="open = false">
       <div class="flex flex-col space-y-3 pt-5">

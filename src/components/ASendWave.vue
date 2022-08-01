@@ -52,12 +52,6 @@ async function sendWave() {
   <div class="w-full">
     <button v-if="store.isWrongNetwork" class="w-full wave-button cursor-not-allowed bg-gray-300 rounded font-semibold h-10 mb-2">Wave at me!</button>
     <button v-else @click="open = true" class="w-full wave-button bg-white rounded font-semibold h-10 mb-2 transition ease-in-out delay-150 hover:scale-105">Wave at me!</button>
-    <span v-if="store.isWrongNetwork" class="flex justify-center items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">
-      <svg class="mr-1.5 h-2 w-2 text-purple-400" fill="currentColor" viewBox="0 0 8 8">
-        <circle cx="4" cy="4" r="3" />
-      </svg>
-      <span>Switch network to goerli</span>
-    </span>
     <AModal title="Wave at me" :open="open" @close="open = false" :hide="loading || hash">
       <div v-if="!loading && !hash" class="w-full flex flex-col space-y-4 pt-4">
         <Listbox as="div" v-model="wave.emoji">
