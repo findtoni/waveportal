@@ -17,7 +17,8 @@
 - [Waveportal](https://goerli.etherscan.io/address/0xf7b7ab1de3fba402e563e3f9b17547a0aaddb078)
 
 ## Instructions
-```
+
+``` bash
 # install dependencies
 $ npm install
 
