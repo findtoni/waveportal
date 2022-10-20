@@ -4,7 +4,7 @@
 [![waveportal](https://wgxwocyublngaeisjxte.supabase.co/storage/v1/object/public/assets/projects/waveportal-cover.jpg)](https://wgxwocyublngaeisjxte.supabase.co/storage/v1/object/public/assets/projects/waveportal-cover.jpg)
 
 
-## Stack
+### Stack
 - Solidity
 - Hardhat
 - Ethers.js
@@ -13,10 +13,10 @@
 - Metamask
 - WalletConnect
 
-## Smart Contract on Goerli
+### Smart Contract on Goerli
 - [Waveportal](https://goerli.etherscan.io/address/0xf7b7ab1de3fba402e563e3f9b17547a0aaddb078)
 
-## Instructions
+### Instructions
 
 ``` bash
 # install dependencies
