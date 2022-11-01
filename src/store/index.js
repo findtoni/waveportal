@@ -58,7 +58,7 @@ export const useStore = defineStore('waveportal', {
         this.account = accounts[0];
         this.network.chainId = chainId;
         if (this.isWrongNetwork) await this.switchNetwork();
-      } console.log('Metamask is not installed');
+      } else console.log('Metamask is not installed');
     },
     async useWalletConnect() {
       const provider = new WalletConnectProvider({ infuraId: import.meta.env.VITE_INFURA_KEY });
