@@ -14,7 +14,7 @@ store.fetchWaves();
         <svg class="mr-1.5 h-2 w-2 text-pink-400" fill="currentColor" viewBox="0 0 8 8">
           <circle cx="4" cy="4" r="3" />
         </svg>
-        Switch network to Goerli to view
+        Switch network to Goerli here to view
       </span>
     </div>
     <div v-else class="flex justify-center items-center pb-20 md:pb-10">

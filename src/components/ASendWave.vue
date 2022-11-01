@@ -2,7 +2,6 @@
 import { ref, computed } from 'vue';
 import { useStore } from '../store';
 import { CheckIcon, SelectorIcon, CheckCircleIcon, ExternalLinkIcon, RefreshIcon } from '@heroicons/vue/solid';
-import { Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions } from '@headlessui/vue';
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import AModal from './base/AModal.vue';
 import ALoading from './base/ALoading.vue';
@@ -55,6 +54,7 @@ async function sendWave() {
     <button v-if="store.isWrongNetwork" class="w-full wave-button cursor-not-allowed bg-gray-300 rounded font-semibold h-10 mb-2">Wave at me!</button>
     <button v-else @click="open = true" class="w-full wave-button bg-white rounded font-semibold h-10 mb-2 transition ease-in-out delay-150 hover:scale-105">Wave at me!</button>
     <AModal title="Wave at me" :open="open" @close="open = false" :hide="loading || hash">
+      <!-- new wave message -->
       <div v-if="!loading && !hash" class="w-full flex flex-col space-y-4 pt-4">
         <Listbox as="div" v-model="wave.emoji">
           <ListboxLabel class="block text-sm font-medium text-white">Choose message</ListboxLabel>
@@ -108,6 +108,7 @@ async function sendWave() {
         </Listbox>
         <button @click="sendWave" class="w-full h-10 bg-white rounded font-semibold">Wave at me!</button>
       </div>
+      <!-- wave transaction progress -->
       <div v-else-if="loading || hash" class="flex flex-col items-center space-y-3 py-4">
         <div v-if="!hash" class="flex flex-col items-center space-y-3">
           <ALoading is-large />

@@ -11,10 +11,10 @@ const loading = ref({
   walletconnect: false
 });
 
-async function connectWallet(network) {
-  loading.value[network] = true;
-  await store.connectWallet(network);
-  loading.value[network] = false;
+async function connectWallet(wallet) {
+  loading.value[wallet] = true;
+  await store.connectWallet(wallet);
+  loading.value[wallet] = false;
   open.value = false;
 }
 </script>
