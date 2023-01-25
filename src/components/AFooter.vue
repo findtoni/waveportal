@@ -16,7 +16,7 @@ const open = ref(false);
     <div class="w-auto">
       <div v-if="open" class="rounded text-white p-4 mr-10 mb-4 border-light bg-light border">
         <p class="leading-snug text-sm">
-          <a href="https://findtoni.dev/blog/ethereum-dev-overview" target="_blank" class="underline">Here's</a>
+          <a href="https://findtoni.dev/blog/ethereum-development-overview" target="_blank" class="underline">Here's</a>
           a quick overview of building on Ethereum</p>
         <p class="leading-snug text-sm pt-1">
           <a href="https://findtoni.dev/blog/build-solidity-vue-web3-app" target="_blank" class="underline">
