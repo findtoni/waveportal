@@ -75,6 +75,9 @@ export const useStore = defineStore('waveportal', {
         method: 'wallet_switchEthereumChain',
         params: [{ chainId: '0x5' }],
       });
+      this.reload();
+    },
+    reload() {
       window.location.reload();
     },
     async fetchWaves() {

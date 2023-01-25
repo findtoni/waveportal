@@ -121,7 +121,7 @@ async function sendWave() {
           <a :href="`https://goerli.etherscan.io/tx/${hash}`" target="_blank">
             <p class="text-white underline inline-flex">View Transaction<ExternalLinkIcon class="w-4 h-4 mr-2 mt-1" /></p>
           </a>
-          <p @click="window.location.reload()" class="inline-flex text-gray-300 text-xs cursor-pointer">
+          <p @click="store.reload()" class="inline-flex text-gray-300 text-xs cursor-pointer">
             <RefreshIcon class="w-3 h-3 mt-0.5 mr-1" />Reload to view wave
           </p>
         </div>
