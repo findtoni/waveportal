@@ -18,7 +18,6 @@ export const useStore = defineStore('waveportal', {
         chainId: null,
       },
       loading: false,
-      error: null,
     }
   },
   getters: {
@@ -43,8 +42,8 @@ export const useStore = defineStore('waveportal', {
         window.location.reload();
       });
     },
-    async connectWallet(network) {
-      if (network == 'metamask') {
+    async connectWallet(wallet) {
+      if (wallet == 'metamask') {
         await this.useMetamask();
       } else await this.useWalletConnect();
       await this.fetchWaves();
@@ -59,7 +58,7 @@ export const useStore = defineStore('waveportal', {
         this.account = accounts[0];
         this.network.chainId = chainId;
         if (this.isWrongNetwork) await this.switchNetwork();
-      } else this.error = 'Install Metamask';
+      } else console.log('Metamask is not installed');
     },
     async useWalletConnect() {
       const provider = new WalletConnectProvider({ infuraId: import.meta.env.VITE_INFURA_KEY });
@@ -76,6 +75,9 @@ export const useStore = defineStore('waveportal', {
         method: 'wallet_switchEthereumChain',
         params: [{ chainId: '0x5' }],
       });
+      this.reload();
+    },
+    reload() {
       window.location.reload();
     },
     async fetchWaves() {
