@@ -20,7 +20,7 @@ const open = ref(false);
           a quick overview of building on Ethereum</p>
         <p class="leading-snug text-sm pt-1">
           <a href="https://findtoni.dev/blog/build-solidity-vue-web3-app" target="_blank" class="underline">
-          Learn how to build this app</a>
+          Learn how to build this dApp</a>
         </p>
       </div>
       <QuestionMarkCircleIcon @click="open = !open" class="h-8 w-8 md:h-10 md:w-10 text-gray-300 hover:text-white cursor-pointer" />

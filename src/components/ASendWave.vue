@@ -31,7 +31,7 @@ const open = ref(false);
 const loading = ref(false);
 const hash = ref(null);
 const bePatient = ref(false);
-const wave = ref({ message: 'Hello!', emoji: '👋' });
+const wave = ref({ message: 'Hello', emoji: '👋' });
 const query = ref('');
 const filtered = computed(() =>
   query.value === ''
